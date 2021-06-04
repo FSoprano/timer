@@ -84,4 +84,13 @@ export default class Timer extends React.Component {
         console.log(`${snapshot}: Zeit wurde zurückgesetzt`);
         }
     }
+  componentWillUnmount() {
+    /* Beendet das in componentDidMount erzeugte Intervall. component 
+     * WillUnmount wird direkt vor dem Entfernen einer Komponente auf
+     * gerufen. Der Aufruf beseitigt das durch getToggleShowHandler 
+     * verursachte Problem (state update bei entfernter Komponente)
+     */
+     console.log('componentWillUnmount');
+     clearInterval(this.interval);
+    }
 }
